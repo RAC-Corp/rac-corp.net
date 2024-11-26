@@ -1,2 +1,3 @@
-const { text } = 'hi';
-console.log(text);
+function showAlert() {
+    alert('hi');
+}
