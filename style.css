@@ -21,13 +21,13 @@ p {
     color: lightblue;
 }
 
-#button1 {
+button {
     color: white;
     background-color: rgb(43, 43, 43);
     border: none;
     cursor: pointer;
 }
 
-#button1:hover {
+button:hover {
     background-color: rgb(35, 35, 35);
 }
