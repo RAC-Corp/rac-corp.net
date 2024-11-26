@@ -17,10 +17,6 @@ p {
     font-family:Arial, Helvetica, sans-serif;
 }
 
-#a1 {
-    color: lightblue;
-}
-
 button {
     color: white;
     background-color: rgb(43, 43, 43);
@@ -30,4 +26,8 @@ button {
 
 button:hover {
     background-color: rgb(35, 35, 35);
+}
+
+#a1 {
+    color: lightblue;
 }
