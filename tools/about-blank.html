@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>about:blank Opener</title>
+        <link rel="stylesheet" href="../styles/style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="../assets/site-icon.png">
+    </head>
+
+    <body>
+        <div class="navbar">
+            <ul id="navbar-ul">
+                <li id="navbar-li"><a href="https://rac-corp.net/">Home</a></li>
+                <li id="navbar-li"><a href="https://rac-corp.net/games/">Games</a></li>
+                <li id="navbar-li"><a href="https://rac-corp.net/docs/">Docs</a></li>
+                <li id="navbar-li"><a href="https://rac-corp.net/about/">About</a></li>
+            </ul>
+        </div>
+        <br>
+
+        <div class="main" style="margin: 10px; margin-top: 40px;">
+            <h1>about:blank OPENER</h1>
+            <hr>
+            <label for="url">URL:</label>
+            <input type="text" id="url" name="url" placeholder="Type your URL here">
+            <button onclick="create()">Create!</button>
+        </div>
+
+        <script>
+            function create() {
+                var url = document.getElementById('url').value;
+                var win = window.open('about:blank');
+                win.document.body.style.margin = '0';
+                win.document.body.style.height = '100vh';
+                var iframe = win.document.createElement('iframe');
+                iframe.style.border = 'none';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
+                iframe.style.margin = '0';
+                iframe.src = url;
+                win.document.body.appendChild(iframe);
+            }
+            </script>
+    </body>
+</html>

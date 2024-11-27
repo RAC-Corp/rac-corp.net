@@ -84,6 +84,15 @@ a {
     color: lightblue;
 }
 
+label {
+    color: white;
+}
+
+input {
+    background-color: rgb(80, 80, 80);
+    border: none;
+}
+
 button {
     color: white;
     background-color: rgb(43, 43, 43);
