@@ -27,8 +27,17 @@
             <h1>NSFW NEKO IMAGES</h1>
             <hr>
             <button onclick="fetchImage()" id="generate">Get an Image!</button>
-            <img id="image" src="">
+            <br>
+            <img id="image" src="../assets/car_pandemonium.gif">
             <p id="error-paragraph">No API errors yet</p>
+        </div>
+
+        <div class="footer-container">
+            <div class="footer">
+                <div class="footer-heading">
+                    <p>You can blame <a href="https://www.roblox.com/users/85875790/profile">Harrisson</a> for this</p>
+                </div>
+            </div>
         </div>
 
         <script>
@@ -60,10 +69,11 @@
                     if (!data) {
                         return;
                     }
-                    imgElement.src = data['url'];
+                    imgElement.src = data.link;
                 })
                 .catch(error => {
                     button.textContent = 'API gave us an error, try again in a few seconds';
+                    console.log(error);
                     errorParagraph.textContent = String(error);
                     setTimeout(() => {
                         button.textContent = 'Get an Image!'
@@ -75,7 +85,3 @@
         </script>
     </body>
 </html>
-
-<footer>
-    <p>You can blame <a href="https://www.roblox.com/users/85875790/profile">Harrisson</a> for this</p>
-</footer>
