@@ -7,13 +7,35 @@
         <link rel="stylesheet" href="../styles/style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
+
+        <script>
+            function actualRandom(mini, maxi) {
+                const min = Math.ceil(mini);
+                const max = Math.ceil(maxi);
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+            function rare() {
+                const rand = actualRandom(1, 5);
+                if (rand === 1) {
+                    return "Stop. Ouw sewvews can't handle that many wequests. >~<";
+                } else {
+                    return 'Stop.';
+                }
+            }
+
+            window.onload = function() {
+                const h3 = document.getElementById('message');
+                h3.textContent = rare();
+            };
+        </script>
     </head>
 
     <body>
         <div class="error" style="margin: 10px; margin-top: 10px;">
             <h1>429 Too Many Requests</h1>
             <hr>
-            <p>Stop.</p>
+            <h3 id="message">Stop.</h3>
         </div>
     </body>
 </html>
