@@ -22,9 +22,33 @@ body {
     background-color: rgb(55, 55, 55);
 }
 
-footer {
-    margin: 10px;
-    font-size: xx-small;
+.footer-container {
+    background-color: rgb(40,40,40);
+    padding-bottom: 4rem;
+}
+
+.footer {
+    width: 80%;
+    height: 40vh;
+    background-color: rgb(40,40,40);
+    color: white;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}
+
+.footer-heading {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin-right: 4rem;
+    margin-bottom: 4rem;
+}
+
+.footer-heading a {
+    color: white;
+    margin-bottom: 0.5rem;
 }
 
 h1 {
