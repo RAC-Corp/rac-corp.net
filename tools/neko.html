@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<meta content="Privacy Policy" property="og:title">
+<meta content="Some long text lol" property="og:description">
+
+<html>
+    <head>
+        <title>NSFW Neko Images</title>
+        <link rel="stylesheet" href="../styles/style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="../assets/site-icon.png">
+    </head>
+
+    <body>
+        <div class="navbar">
+            <ul id="navbar-ul">
+                <li id="navbar-li"><a href="https://rac-corp.net/">Home</a></li>
+                <li id="navbar-li"><a href="https://rac-corp.net/docs">Docs</a></li>
+                <li id="navbar-li"><a href="https://rac-corp.net/about/">About</a></li>
+            </ul>
+        </div>
+        <br>
+
+        <div class="main" style="margin: 10px; margin-top: 40px;">
+            <h1>NSFW NEKO IMAGES</h1>
+            <hr>
+            <button onclick="fetchImage()" id="generate">Get an Image!</button>
+            <img id="image" src="">
+            <p id="error-paragraph">No API errors yet</p>
+        </div>
+
+        <script>
+            const button = document.getElementById('generate');
+            const imgElement = document.getElementById('image');
+            const errorParagraph = document.getElementById('error-paragraph');
+
+            const url = 'https://purrbot.site/api/img/nsfw/neko/img';
+            let errors = 1;
+
+            function fetchImage() {
+                fetch(url)
+                .then(resp => {
+                    if (!resp.ok) {
+                        button.textContent = 'API gave us an error, try again in a few seconds';
+                        setTimeout(() => {
+                            button.textContent = 'Get an Image!'
+                        }, 2000);
+
+                        return null;
+                    } else {
+                        return resp.json();
+                    }
+                })
+                .then(data => {
+                    if (!data) {
+                        return;
+                    }
+                    imgElement.src = data.url;
+                })
+                .catch(error => {
+                    button.textContent = 'API gave us an error, try again in a few seconds';
+                    errorParagraph.textContent = String(error);
+                    setTimeout(() => {
+                        button.textContent = 'Get an Image!'
+                        errorParagraph.textContent = `${errors} errors so far`
+                        errors += 1;
+                    }, 2000);
+                });
+            }
+        </script>
+    </body>
+</html>
+
+<footer>
+    <p>You can blame <a href="https://www.roblox.com/users/85875790/profile">Harrisson</a> for this</p>
+</footer>
