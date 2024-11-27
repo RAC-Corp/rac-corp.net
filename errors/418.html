@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>418 I'm a teapot</title>
+        <link rel="icon" type="image/png" href="../assets/error.png">
+        <link rel="stylesheet" href="../styles/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+        <div class="error" style="margin: 10px; margin-top: 10px;">
+            <h1>418 I'm a teapot</h1>
+            <hr>
+            <p>The server got turned into a teapot...</p>
+            <a id="fake" target="_blank" href="https://www.roblox.com/games/44814/Classic-Dodge-The-Teapots-of-Doom">Back to Home</a>
+        </div>
+
+        <script>
+            const link = document.getElementById('fake');
+
+            link.onclick = function(event) {
+                link.textContent = 'SIKE lmaoooo >:)';
+                setTimeout(() => {
+                    link.textContent = "Ok sorry here's the actual link";
+                    link.href = 'https://rac-corp.net';
+                }, 3000);
+            };
+        </script>
+    </body>
+</html>
