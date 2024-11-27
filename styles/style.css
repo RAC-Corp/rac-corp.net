@@ -4,6 +4,7 @@
 }
 
 body {
+    margin: 0;
     background-color: rgb(55, 55, 55);
 }
 
@@ -47,4 +48,31 @@ button:hover {
 code {
     font-family: 'Courier New', Courier, monospace;
     color: white;
+}
+
+#navbar-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(40, 40, 40);
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+#navbar-li {
+    float: left;
+}
+
+#navbar-li a {
+    display: block;
+    background-color: rgb(40, 40, 40);
+    color: white;
+    padding: 14px 16px;
+    text-align: center;
+}
+
+#navbar-li a:hover {
+    background-color: rgb(20, 20, 20);
 }
