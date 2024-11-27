@@ -60,7 +60,7 @@
                     if (!data) {
                         return;
                     }
-                    imgElement.src = data.url;
+                    imgElement.src = data['url'];
                 })
                 .catch(error => {
                     button.textContent = 'API gave us an error, try again in a few seconds';
