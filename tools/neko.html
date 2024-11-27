@@ -40,7 +40,10 @@
             let errors = 1;
 
             function fetchImage() {
-                fetch(url)
+                fetch(url, {
+                    method: 'GET',
+                    mode: 'no-cors'
+                })
                 .then(resp => {
                     if (!resp.ok) {
                         button.textContent = 'API gave us an error, try again in a few seconds';
