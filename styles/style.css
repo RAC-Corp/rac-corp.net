@@ -22,6 +22,11 @@ body {
     background-color: rgb(55, 55, 55);
 }
 
+footer {
+    margin: 10px;
+    font-size: xx-small;
+}
+
 h1 {
     color: white;
 }
