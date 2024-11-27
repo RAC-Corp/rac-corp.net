@@ -26,6 +26,7 @@
         <div class="main">
             <h1>BOT COMMANDS</h1>
             <p>API endpoints <a href="https://rac-corp.net/docs/">here</a></p>
+            <p>Invite the bot <a href="https://rac-corp.net/invite/">here</a></p>
             <p>Bot prefix: <code>!!</code></p>
             <p>(arg) means the argument is required</p>
             <p>[arg] means the argument is optional</p>
@@ -34,16 +35,18 @@
             <div id="commands" class="scroll-container">
                 <div id="command-content" class="content">
                     <h2>MODERATION COMMANDS</h2>
-                    <p><code>ban (player)</code> | Bans a player</p>
+                    <p><code>ban (player) [time]</code> | Bans a player for an optional amount of time (none is permanent)</p>
                     <p><code>unban (player)</code> | Unbans a player</p>
-                    <p><code>bans</code> | Gets the current list of banned players</p>
+                    <p><code>bans [date]</code> | Gets the current list of banned players from an optional date</p>
                     <p><code>kick (player)</code> | Kicks a player</p>
+                    <p><code>kickothers</code> | Kicks all players except for moderators or higher</p>
+                    <p><code>kickall</code> | Kicks all players in the server besides you</p>
 
                     <br>
 
                     <h2>UTILITY COMMANDS</h2>
-                    <p><code>ping</code> | Returns the ping of the bot</p>
-                    <p><code>ping api</code> | Returns the ping of the of the website's API</p>
+                    <p><code>info server (server)</code> | Return the info of a server</p>
+                    <p><code>ping</code> | Returns the ping of the bot and the API's</p>
                 </div>
             </div>
         </div>
