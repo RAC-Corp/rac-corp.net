@@ -36,6 +36,11 @@
         </div>
 
         <script>
+            const min = document.getElementById('min').value || 0
+            const max = document.getElementById('max').value || 100
+            const result = document.getElementById('result')
+            const resultNoCommas = document.getElementById('result-no-commas')
+
             function humanizeNumber(number) {
                 return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             }
@@ -47,10 +52,6 @@
             }
 
             function create() {
-                const min = document.getElementById('min').value || 0
-                const max = document.getElementById('max').value || 100
-                const result = document.getElementById('result')
-                const resultNoCommas = document.getElementById('result-no-commas')
                 let random = actualRandom(min, max)
 
                 result.textContent = `RESULT: ${humanizeNumber(random)}`
