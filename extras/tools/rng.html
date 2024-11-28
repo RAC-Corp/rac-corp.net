@@ -32,6 +32,7 @@
             <br><br>
             <button onclick="create()">Randomize!</button>
             <h3 id="result">RESULT: 0</h3>
+            <h3 id="result-no-commas">RESULT (NO COMMAS): 0</h3>
         </div>
 
         <script>
@@ -49,9 +50,12 @@
                 const min = document.getElementById('min').value || 0
                 const max = document.getElementById('max').value || 100
                 const result = document.getElementById('result')
+                const resultNoCommas = document.getElementById('result-no-commas')
                 let random = actualRandom(min, max)
+
                 result.textContent = `RESULT: ${humanizeNumber(random)}`
+                resultNoCommas.textContent = `RESULT (NO COMMAS): ${random}`
             }
-            </script>
+        </script>
     </body>
 </html>

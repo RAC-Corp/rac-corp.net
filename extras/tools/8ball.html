@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>8-Ball</title>
+        <link rel="stylesheet" href="../../styles/style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="../../assets/site-icon.png">
+    </head>
+
+    <body>
+        <div class="navbar">
+            <ul id="navbar-ul">
+                <li id="navbar-li"><a href="https://rac-corp.net/">Home</a></li>
+                <li id="navbar-li"><a href="https://rac-corp.net/games/">Games</a></li>
+                <li id="navbar-li"><a href="https://rac-corp.net/docs/">Docs</a></li>
+                <li id="navbar-li"><a href="https://rac-corp.net/extras/">Extras</a></li>
+                <li id="navbar-li"><a href="https://rac-corp.net/about/">About</a></li>
+            </ul>
+        </div>
+        <br>
+
+        <div class="main" style="margin: 10px; margin-top: 40px;">
+            <h1>EIGHT BALL</h1>
+            <hr>
+            <label for="question">Question:</label>
+            <input type="text" id="question" name="question" placeholder="optional question">
+            <button onclick="create()">Shake!</button>
+            <br>
+            <h3 id="result">RESULT: NONE</h3>
+        </div>
+
+        <script>
+            function create() {
+                const resultElement = document.getElementById('result')
+                const choices = [
+                    // affirmative
+                    'It is certain',
+                    'It is decidedly so',
+                    'Without a doubt',
+                    'Yes definitely',
+                    'You may rely on it',
+                    'As I see it, yes',
+                    'Most likely',
+                    'Outlook good',
+                    'Yes',
+                    'Signs point to yes',
+
+                    // non-commital
+                    'Reply hazy, try again',
+                    'Ask again later',
+                    'Better not tell you now',
+                    'Cannot predict now',
+                    'Concentrate and ask again',
+
+                    // negative
+                    "Don't count on it",
+                    'My reply is no',
+                    'My sources say no',
+                    'Outlook not so good',
+                    'Very doubtful'
+                ]
+                const index = Math.floor(Math.random() * choices.length)
+                const response = choices[index]
+                resultElement.textContent = `RESULT: ${response}`
+            }
+        </script>
+    </body>
+</html>
