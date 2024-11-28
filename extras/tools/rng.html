@@ -14,9 +14,8 @@
             <ul id="navbar-ul">
                 <li id="navbar-li"><a href="https://rac-corp.net/">Home</a></li>
                 <li id="navbar-li"><a href="https://rac-corp.net/games/">Games</a></li>
-                <li id="navbar-li"><a href="https://rac-corp.net/docs/commands">Commands</a></li>
                 <li id="navbar-li"><a href="https://rac-corp.net/docs/">Docs</a></li>
-                <li id="navbar-li"><a href="https://rac-corp.net/tools/">Tools</a></li>
+                <li id="navbar-li"><a href="https://rac-corp.net/extras/">Extras</a></li>
                 <li id="navbar-li"><a href="https://rac-corp.net/about/">About</a></li>
             </ul>
         </div>
@@ -36,6 +35,10 @@
         </div>
 
         <script>
+            function humanizeNumber(number) {
+                return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+
             function actualRandom(minimum, maximum) {
                 const min = Math.ceil(minimum);
                 const max = Math.ceil(maximum);
@@ -47,7 +50,7 @@
                 const max = document.getElementById('max').value || 100
                 const result = document.getElementById('result')
                 let random = actualRandom(min, max)
-                result.textContent = `RESULT: ${random}`
+                result.textContent = `RESULT: ${humanizeNumber(random)}`
             }
             </script>
     </body>
