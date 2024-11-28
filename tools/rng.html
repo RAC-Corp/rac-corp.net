@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>RNG</title>
+        <link rel="stylesheet" href="../styles/style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="../assets/site-icon.png">
+    </head>
+
+    <body>
+        <div class="navbar">
+            <ul id="navbar-ul">
+                <li id="navbar-li"><a href="https://rac-corp.net/">Home</a></li>
+                <li id="navbar-li"><a href="https://rac-corp.net/games/">Games</a></li>
+                <li id="navbar-li"><a href="https://rac-corp.net/docs/">Docs</a></li>
+                <li id="navbar-li"><a href="https://rac-corp.net/about/">About</a></li>
+            </ul>
+        </div>
+        <br>
+
+        <div class="main" style="margin: 10px; margin-top: 40px;">
+            <h1>RANDOM NUMBER GENERATOR</h1>
+            <hr>
+            <label for="url">Minimum Number:</label>
+            <input type="text" id="min" name="url" placeholder="0">
+            <br>
+            <label for="url">Maximum Number:</label>
+            <input type="text" id="max" name="url" placeholder="100">
+            <br><br>
+            <button onclick="create()">Randomize!</button>
+            <h3 id="result">RESULT: 0</h3>
+        </div>
+
+        <script>
+            function actualRandom(minimum, maximum) {
+                const min = Math.ceil(minimum);
+                const max = Math.ceil(maximum);
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+
+            function create() {
+                const min = document.getElementById('min').value || 0
+                const max = document.getElementById('max').value || 100
+                const result = document.getElementById('result')
+                let random = actualRandom(min, max)
+                result.textContent = `RESULT: ${random}`
+            }
+            </script>
+    </body>
+</html>
