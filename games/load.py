@@ -7,9 +7,9 @@ games = {
 }
 
 for game in games:
-  try:
-    r = requests.get(games[game]).text
-  except Exception as e:
-    print(str(e))
-  else:
-    print(r)
+	try:
+		r = requests.get(games[game]).text
+	except Exception as e:
+		print(str(e))
+	else:
+		print(r)
