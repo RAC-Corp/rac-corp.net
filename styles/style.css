@@ -27,28 +27,24 @@ body {
     padding-bottom: 4rem;
 }
 
-.footer {
-    width: 80%;
-    height: 40vh;
-    background-color: rgb(40,40,40);
-    color: white;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 10px;
-    margin-bottom: 1rem;
+footer {
+    background-color: rgb(40, 40, 40);
+    margin: -10px;
+    min-height: 150px;
+    position: relative;
+    margin-top: -100px;
+    clear: both;
 }
 
-.footer-heading {
-    color: white;
-    display: flex;
-    flex-direction: column;
-    margin-right: 4rem;
-    margin-bottom: 4rem;
-}
-
-.footer-heading a {
+footer a {
     color: lightblue;
     margin-bottom: 0.5rem;
+    margin: 50px;
+}
+
+footer h2{
+    color: white;
+    margin: 50px;
 }
 
 .main {
