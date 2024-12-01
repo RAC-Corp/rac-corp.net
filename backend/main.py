@@ -28,7 +28,7 @@ async def lifespan(app: FastAPI):
 
 
 limiter = Limiter(key_func=get_remote_address, default_limits=['10/second'])
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(title='RAC API', description='pretty cool API', lifespan=lifespan)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler) # type: ignore
 app.add_middleware(SlowAPIMiddleware)
@@ -46,11 +46,17 @@ async def http_exception_handler(request: Request, exception: HTTPException):
     )
 
 
+# Utility endpoints
+
+
 app.include_router(
     ping.router,
     prefix='/utilities',
     dependencies=[Depends(auth.api_key_auth)]
 )
+
+
+# AI endpoints
 
 
 app.include_router(

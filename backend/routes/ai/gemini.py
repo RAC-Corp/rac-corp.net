@@ -5,6 +5,7 @@ from fastapi.responses import JSONResponse
 
 import os
 import time
+import aiohttp
 
 from models.ai_models import GeminiRequestModel
 from utilities.session import AiohttpSessionManager
@@ -17,7 +18,7 @@ url: str = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-f
 
 
 @router.post('/create', summary='Talk to Google Gemini AI')
-async def ping(request: Request, data: GeminiRequestModel):
+async def create_gemini(request: Request, data: GeminiRequestModel):
     if len(data.prompt) > 2000:
         raise HTTPException(
             413,
@@ -26,9 +27,9 @@ async def ping(request: Request, data: GeminiRequestModel):
     if not gemini_key:
         raise HTTPException(500, AIErrors.NO_GEMINI_KEY.value)
     
-    session = await AiohttpSessionManager().get_session()
-    if not session:
-        raise HTTPException(500, HTTPSessionErrors.NO_SESSION.value)
+    session = aiohttp.ClientSession()
+    # if not session:
+        # raise HTTPException(500, HTTPSessionErrors.NO_SESSION.value)
 
     params: dict[str, str] = {
         'key': gemini_key
@@ -48,24 +49,25 @@ async def ping(request: Request, data: GeminiRequestModel):
         json_data: Any = await resp.json()
         response: str = json_data['candidates'][0]['content']['parts'][0]['text']
 
-        if data.debug:
-            metadata: dict[str, int] = json_data['usageMetadata']
-            ptc: int = metadata['promptTokenCount']
-            ctc: int = metadata['candidatesTokenCount']
-            ttc: int = metadata['totalTokenCount']
-            return JSONResponse(
-                {
-                    'response': response,
-                    'totalTime': total_time, 
-                    'metadata': {
-                        'promptTokenCount': ptc,
-                        'responseTokenCount': ctc,
-                        'totalTokenCount': ttc,
-                        'promptLength': len(data.prompt),
-                        'responseLength': len(response)
-                    }
-                },
-                200
-            )
-        else:
-            return JSONResponse({'response': response, 'totalTime': total_time}, 200)
+    await session.close()
+    if data.debug:
+        metadata: dict[str, int] = json_data['usageMetadata']
+        ptc: int = metadata['promptTokenCount']
+        ctc: int = metadata['candidatesTokenCount']
+        ttc: int = metadata['totalTokenCount']
+        return JSONResponse(
+            {
+                'response': response,
+                'totalTime': total_time, 
+                'metadata': {
+                    'promptTokenCount': ptc,
+                    'responseTokenCount': ctc,
+                    'totalTokenCount': ttc,
+                    'promptLength': len(data.prompt),
+                    'responseLength': len(response)
+                }
+            },
+            200
+        )
+    else:
+        return JSONResponse({'response': response, 'totalTime': total_time}, 200)
