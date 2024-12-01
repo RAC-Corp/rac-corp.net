@@ -22,9 +22,11 @@ from routes.ai import (
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await session_manager.startup()
+    session_manager = AiohttpSessionManager()
+    app.state.session_manager = session_manager
+    app.state.session = await session_manager.startup()
     yield
-    await session_manager.shutdown()
+    await app.state.session_manager.shutdown()
 
 
 limiter = Limiter(key_func=get_remote_address, default_limits=['10/second'])
@@ -32,7 +34,6 @@ app = FastAPI(title='RAC API', description='pretty cool API', lifespan=lifespan)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler) # type: ignore
 app.add_middleware(SlowAPIMiddleware)
-session_manager = AiohttpSessionManager()
 
 
 @app.exception_handler(HTTPException)

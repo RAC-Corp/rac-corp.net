@@ -8,7 +8,6 @@ import time
 import aiohttp
 
 from models.ai_models import GeminiRequestModel
-from utilities.session import AiohttpSessionManager
 from enums.errors import HTTPSessionErrors, AIErrors
 
 
@@ -27,9 +26,9 @@ async def create_gemini(request: Request, data: GeminiRequestModel):
     if not gemini_key:
         raise HTTPException(500, AIErrors.NO_GEMINI_KEY.value)
     
-    session = aiohttp.ClientSession()
-    # if not session:
-        # raise HTTPException(500, HTTPSessionErrors.NO_SESSION.value)
+    session: aiohttp.ClientSession = request.app.state.session
+    if not session:
+        raise HTTPException(500, HTTPSessionErrors.NO_SESSION.value)
 
     params: dict[str, str] = {
         'key': gemini_key
