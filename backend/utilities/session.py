@@ -6,10 +6,10 @@ class AiohttpSessionManager:
     def __init__(self) -> None:
         self.session = None
 
-    async def startup(self) -> bool:
+    async def startup(self) -> Union[aiohttp.ClientSession, bool]:
         if not self.session:
             self.session = aiohttp.ClientSession()
-            return True
+            return self.session
         else:
             return False
 
