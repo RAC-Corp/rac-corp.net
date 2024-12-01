@@ -17,39 +17,30 @@
     scroll-behavior: smooth;
 }
 
-body {
-    margin: 0;
-    background-color: rgb(55, 55, 55);
-}
-
 .footer-container {
     background-color: rgb(40,40,40);
     padding-bottom: 4rem;
 }
 
+body {
+    background-color: rgb(55, 55, 55);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 footer {
-    background-color: rgb(40, 40, 40);
-    margin: -10px;
-    min-height: 150px;
-    position: relative;
-    margin-top: -100px;
-    clear: both;
-}
-
-footer a {
-    color: lightblue;
-    margin-bottom: 0.5rem;
-    margin: 18px;
-}
-
-footer h2 {
+    background-color: rgb(40,40,40);
     color: white;
-    margin: 18px;
+    text-align: left;
+    padding: 1rem;
 }
 
 .main {
     margin: 10px;
-    margin-top: 40px;
+    margin-top: 25px;
+    flex: 1;
 }
 
 h1 {
