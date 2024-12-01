@@ -28,6 +28,6 @@ app.include_router(
 
 
 @app.get('/')
-@limiter.limit('10/second')
+@limiter.limit('5/second')
 async def root(request: Request):
-    return JSONResponse({'content': 'hello world'})
+    return RedirectResponse('https://api.rac-corp.net/docs/')
