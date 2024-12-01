@@ -7,8 +7,8 @@ from slowapi.util import get_remote_address
 from slowapi.middleware import SlowAPIMiddleware
 from slowapi.errors import RateLimitExceeded
 
-from api.utilities import auth
-from api.routes.utils import (
+from utilities import auth
+from routes.utils import (
     ping
 )
 
