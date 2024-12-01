@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, HTTPException
 from fastapi.responses import JSONResponse, Response, RedirectResponse
 from fastapi.requests import Request
 
@@ -25,6 +25,17 @@ app.include_router(
     prefix='/utilities',
     dependencies=[Depends(auth.api_key_auth)]
 )
+
+
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request: Request, exception: HTTPException):
+    return JSONResponse(
+        status_code=exception.status_code, 
+        content={
+            'status': exception.status_code,
+            'detail': exception.detail
+        }
+    )
 
 
 @app.get('/', summary='Don\'t GET this endpoint, it is just a redirect')
