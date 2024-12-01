@@ -48,7 +48,6 @@ async def create_gemini(request: Request, data: GeminiRequestModel):
         json_data: Any = await resp.json()
         response: str = json_data['candidates'][0]['content']['parts'][0]['text']
 
-    await session.close()
     if data.debug:
         metadata: dict[str, int] = json_data['usageMetadata']
         ptc: int = metadata['promptTokenCount']
