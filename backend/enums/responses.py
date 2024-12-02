@@ -1,34 +1,56 @@
+from typing import Any
 from enum import Enum
+
+
+def generate_response(
+    message: str,
+    description: str, 
+    status: int,
+    detail: str
+) -> dict[str, Any]:
+    return {
+        'description': f'{message}: {description}',
+        'content': {
+            'application/json': {
+                'example': {'status': status, 'detail': detail}
+            }
+        }
+    }
+
+
+error_500: dict[str, Any] = generate_response(
+    'Internal Server Error', 
+    'Something happened on our end',
+    500,
+    'An error message would go here'
+)
+error_403: dict[str, Any] = generate_response(
+    'Forbidden',
+    'The request was not authenticated properly',
+    403,
+    'Forbidden'
+)
+error_401: dict[str, Any] = generate_response(
+    'Unauthorized',
+    'The request was not authenticated at all',
+    401,
+    'Unauthorized'
+)
+error_400: dict[str, Any] = generate_response(
+    'Bad Request',
+    'The request body could not be read by the server',
+    400,
+    'Bad Request'
+)
 
 
 class Responses(Enum):
 
     # ai endpoints
     GEMINI_RESPONSES = {
-        500: {
-            'description': 'Internal Server Error: Something happened on our end',
-            'content': {
-                'application/json': {
-                    'example': {'status': 500, 'detail': 'An error message would go here'}
-                }
-            }
-        },
-        403: {
-            'description': 'Forbidden: The request was not authorized properly',
-            'content': {
-                'application/json': {
-                    'example': {'status': 403, 'detail': 'Forbidden'}
-                }
-            }
-        },
-        401: {
-            'description': 'Unauthorized: The request was not authorized at all',
-            'content': {
-                'application/json': {
-                    'example': {'status': 401, 'detail': 'Unauthorized'}
-                }
-            }
-        },
+        500: error_500,
+        403: error_403,
+        401: error_401,
         200: {
             'description': 'OK: Successful request',
             'content': {
@@ -49,36 +71,14 @@ class Responses(Enum):
         }
     }
     TEXT_MODERATION = {
-        500: {
-            'description': 'Internal Server Error: Something happened on our end',
-            'content': {
-                'application/json': {
-                    'example': {'status': 500, 'detail': 'An error message would go here'}
-                }
-            }
-        },
-        403: {
-            'description': 'Forbidden: The request was not authorized properly',
-            'content': {
-                'application/json': {
-                    'example': {'status': 403, 'detail': 'Forbidden'}
-                }
-            }
-        },
-        401: {
-            'description': 'Unauthorized: The request was not authorized at all',
-            'content': {
-                'application/json': {
-                    'example': {'status': 401, 'detail': 'Unauthorized'}
-                }
-            }
-        },
+        500: error_500,
+        403: error_403,
+        401: error_401,
         200: {
             'description': 'Successful request',
             'content': {
                 'application/json': {
                     'example': {
-                        'flagged': 'Whether the AI flagged the text as inappropiate',
                         'flags': 'A list of the flags that the AI marked'
                     }
                 }
@@ -88,14 +88,7 @@ class Responses(Enum):
 
     # roblox endpoints
     BAN_RESPONSES = {
-        500: {
-            'description': 'Internal Server Error: Something happened on our end',
-            'content': {
-                'application/json': {
-                    'example': {'status': 500, 'detail': 'An error message would go here'}
-                }
-            }
-        },
+        500: error_500,
         409: {
             'description': 'Conflict: The user is already banned',
             'content': {
@@ -112,40 +105,12 @@ class Responses(Enum):
                 }
             }
         },
-        403: {
-            'description': 'Forbidden: The request was not authorized properly',
-            'content': {
-                'application/json': {
-                    'example': {'status': 403, 'detail': 'Forbidden'}
-                }
-            }
-        },
-        401: {
-            'description': 'Unauthorized: The request was not authorized at all',
-            'content': {
-                'application/json': {
-                    'example': {'status': 401, 'detail': 'Unauthorized'}
-                }
-            }
-        },
-        400: {
-            'description': 'Bad Request: The request body could not be read by the server',
-            'content': {
-                'application/json': {
-                    'example': {'status': 400, 'detail': 'Bad Request'}
-                }
-            }
-        },
+        403: error_403,
+        401: error_401,
+        400: error_400,
     }
     UNBAN_RESPONSES = {
-        500: {
-            'description': 'Internal Server Error: Something happened on our end',
-            'content': {
-                'application/json': {
-                    'example': {'status': 500, 'detail': 'An error message would go here'}
-                }
-            }
-        },
+        500: error_500,
         404: {
             'description': 'Not Found: The user is not banned',
             'content': {
@@ -154,33 +119,14 @@ class Responses(Enum):
                 }
             }
         },
-        403: {
-            'description': 'Forbidden: The request was not authorized properly',
-            'content': {
-                'application/json': {
-                    'example': {'status': 403, 'detail': 'Forbidden'}
-                }
-            }
-        },
-        401: {
-            'description': 'Unauthorized: The request was not authorized at all',
-            'content': {
-                'application/json': {
-                    'example': {'status': 401, 'detail': 'Unauthorized'}
-                }
-            }
-        },
-        400: {
-            'description': 'Bad Request: The request body could not be read by the server',
-            'content': {
-                'application/json': {
-                    'example': {'status': 400, 'detail': 'Bad Request'}
-                }
-            }
-        },
+        403: error_403,
+        401: error_401,
+        400: error_400,
     }
 
     # utility endpoints
     UTILITY_RESPONSES = {
-
+        500: error_500,
+        403: error_403,
+        401: error_401
     }

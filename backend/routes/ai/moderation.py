@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Union, Optional
 
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import JSONResponse
@@ -20,7 +20,7 @@ router = APIRouter(prefix='/moderation')
     responses={**Responses.TEXT_MODERATION.value}
 )
 async def moderate_text(request: Request, text: str):
-    session: aiohttp.ClientSession = request.app.state.session
+    session: Optional[aiohttp.ClientSession] = request.app.state.session
     if not session:
         raise HTTPException(500, HTTPSessionErrors.NO_SESSION.value)
 

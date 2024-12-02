@@ -33,7 +33,7 @@ async def moderate_text_input(session: aiohttp.ClientSession, text: str) -> Unio
 
     async with session.post(url, headers=headers, json=json) as resp:
         if resp.status != 200:
-            return f'HTTP {resp.status}: {resp.reason}'
+            return f'OpenAI returned HTTP {resp.status}: {resp.reason}'
         
         data: dict[str, Any] = await resp.json()
         categories: dict[str, bool] = data['results'][0]['categories']

@@ -32,7 +32,7 @@ async def create_gemini(request: Request, data: GeminiRequestModel):
     if not gemini_key:
         raise HTTPException(500, AIErrors.NO_GEMINI_KEY.value)
     
-    session: aiohttp.ClientSession = request.app.state.session
+    session: Optional[aiohttp.ClientSession] = request.app.state.session
     if not session:
         raise HTTPException(500, HTTPSessionErrors.NO_SESSION.value)
 
