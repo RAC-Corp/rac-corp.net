@@ -143,8 +143,37 @@ class Responses(Enum):
     }
 
     # utility endpoints
-    UTILITY_RESPONSES = {
+    PING_RESPONSES = {
         500: error_500,
         403: error_403,
-        401: error_401
+        401: error_401,
+        200: {
+            'description': 'Successful request',
+            'content': {
+                'application/json': {
+                    'example': {
+                        'response': 'pong!'
+                    }
+                }
+            }
+        }
+    }
+    USAGE_RESPONSES = {
+        500: error_500,
+        403: error_403,
+        401: error_401,
+        200: {
+            'description': 'Successful request',
+            'content': {
+                'application/json': {
+                    'example': {
+                        'usage': {
+                            'cpu': 'string',
+                            'rssMem': 'string',
+                            'vmsMem': 'string'
+                        }
+                    }
+                }
+            }
+        }
     }

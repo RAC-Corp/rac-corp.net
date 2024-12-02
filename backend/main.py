@@ -21,8 +21,8 @@ from routes.roblox import (
     bans,
     server
 )
-from routes.utils import (
-    ping
+from backend.routes.utils import (
+    api
 )
 
 
@@ -108,7 +108,7 @@ app.include_router(
 
 
 app.include_router(
-    ping.router,
+    api.router,
     prefix='/utilities',
     dependencies=[Depends(auth.api_key_auth)]
 )

@@ -1,4 +1,5 @@
-aiohttp>=3.11.8
+aiohttp
 fastapi
 uvicorn
 slowapi
+psutil
