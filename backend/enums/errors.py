@@ -12,3 +12,7 @@ class AIErrors(Enum):
 
 class HTTPSessionErrors(Enum):
     NO_SESSION = f'No HTTP session could be found, {discord_message}'
+
+
+class RobloxErrors(Enum):
+    NO_PLAYER_ARGUMENT = 'No player ID or username could be found in the request body'

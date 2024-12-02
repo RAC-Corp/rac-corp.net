@@ -3,6 +3,5 @@ from pydantic import BaseModel
 
 
 class Player(BaseModel):
-    username: str
-    id: int
-    display_name: Optional[str] = None
+    username: Optional[str] = None
+    id: Optional[int] = None

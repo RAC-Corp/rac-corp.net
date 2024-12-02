@@ -1,8 +1,11 @@
+from typing import Union
+
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import JSONResponse
 
 from models.roblox_models import Player
 from enums.responses import Responses
+from enums.errors import RobloxErrors
 
 
 router = APIRouter(prefix='/bans')
@@ -16,7 +19,15 @@ router = APIRouter(prefix='/bans')
     responses={**Responses.BAN_RESPONSES.value}
 )
 async def temp_ban_create(request: Request, player: Player, time: str):
-    return JSONResponse({'response': 'not active yet'})
+    search: Union[str, int]
+    if not player.id and player.username:
+        search = player.username
+    elif not player.username and player.id:
+        search = player.id
+    else:
+        raise HTTPException(400, RobloxErrors.NO_PLAYER_ARGUMENT.value)
+
+    return JSONResponse({'response': 'not active yet', 'provided': search})
 
 
 @router.post(
@@ -26,7 +37,15 @@ async def temp_ban_create(request: Request, player: Player, time: str):
     responses={**Responses.BAN_RESPONSES.value}
 )
 async def perm_ban_create(request: Request, player: Player):
-    return JSONResponse({'response': 'not active yet'})
+    search: Union[str, int]
+    if not player.id and player.username:
+        search = player.username
+    elif not player.username and player.id:
+        search = player.id
+    else:
+        raise HTTPException(400, RobloxErrors.NO_PLAYER_ARGUMENT.value)
+
+    return JSONResponse({'response': 'not active yet', 'provided': search})
 
 
 @router.delete(
@@ -36,4 +55,12 @@ async def perm_ban_create(request: Request, player: Player):
     responses={**Responses.UNBAN_RESPONSES.value}
 )
 async def ban_remove(request: Request, player: Player):
-    return JSONResponse({'response': 'not active yet'})
+    search: Union[str, int]
+    if not player.id and player.username:
+        search = player.username
+    elif not player.username and player.id:
+        search = player.id
+    else:
+        raise HTTPException(400, RobloxErrors.NO_PLAYER_ARGUMENT.value)
+
+    return JSONResponse({'response': 'not active yet', 'provided': search})
