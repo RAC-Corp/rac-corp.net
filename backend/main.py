@@ -36,7 +36,13 @@ async def lifespan(app: FastAPI):
 limiter = Limiter(key_func=get_remote_address, default_limits=['10/second'])
 app = FastAPI(
     title='RAC API', 
-    description='pretty cool API', 
+    description='pretty cool API',
+    terms_of_service='https://rac-corp.net/legal/terms-of-service',
+    license_info={
+        'name': 'MIT License',
+        'url': 'https://opensource.org/license/mit'
+    },
+    version='0.0.5',
     lifespan=lifespan
 )
 app.state.limiter = limiter
