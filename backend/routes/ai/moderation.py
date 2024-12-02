@@ -25,7 +25,4 @@ async def moderate_text(request: Request, text: str):
         raise HTTPException(500, HTTPSessionErrors.NO_SESSION.value)
 
     flags: Union[list, str] = await moderate_text_input(request.app.state.session, text)
-    flagged: bool = False
-    if len(flags) > 0:
-        flagged = True
-    return JSONResponse({'flagged': flagged, 'results': flags})
+    return JSONResponse({'results': flags})
