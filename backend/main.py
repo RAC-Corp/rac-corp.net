@@ -95,7 +95,7 @@ app.include_router(
 
 app.include_router(
     neko.router,
-    prefix='nsfw',
+    prefix='/nsfw',
     dependencies=[Depends(auth.api_key_auth)]
 )
 
