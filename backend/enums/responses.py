@@ -1,13 +1,7 @@
 from enum import Enum
 
 
-class Responses(Enum):
-
-    # ai endpoints
-    GEMINI_RESPONSES = {
-        500: {'description': 'Internal Server Error: Something happened on our end'},
-        403: {'description': 'Forbidden: The request was not authorized properly'},
-        401: {'description': 'Unauthorized: The request was not authorized at all'},
+"""
         200: {
             'description': 'OK: Successful request',
             'content': {
@@ -24,6 +18,16 @@ class Responses(Enum):
                 }
             }
         }
+"""
+
+
+class Responses(Enum):
+
+    # ai endpoints
+    GEMINI_RESPONSES = {
+        500: {'description': 'Internal Server Error: Something happened on our end'},
+        403: {'description': 'Forbidden: The request was not authorized properly'},
+        401: {'description': 'Unauthorized: The request was not authorized at all'},
     }
 
     # roblox endpoints
