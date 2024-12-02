@@ -23,7 +23,7 @@ async def moderate_text_input(session: aiohttp.ClientSession, text: str) -> Unio
         return 'OpenAI key was not found'
 
     headers: dict[str, str] = {
-        'Authorzation': f'Bearer {openai_key}',
+        'Authorization': f'Bearer {openai_key}',
         'Content-Type': 'application/json'
     }
     json: dict[str, str] = {
