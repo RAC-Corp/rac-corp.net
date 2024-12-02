@@ -11,7 +11,7 @@ from models.ai_models import GeminiRequestModel
 from enums.errors import HTTPSessionErrors, AIErrors
 
 
-router = APIRouter()
+router = APIRouter(prefix='/gemini')
 gemini_key: Optional[str] = os.environ.get('gemini_key')
 url: str = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent'
 

@@ -62,7 +62,7 @@ app.include_router(
 
 app.include_router(
     gemini.router,
-    prefix='/ai/gemini',
+    prefix='/ai',
     dependencies=[Depends(auth.api_key_auth)]
 )
 
