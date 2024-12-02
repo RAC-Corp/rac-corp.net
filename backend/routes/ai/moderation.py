@@ -4,6 +4,7 @@ from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import JSONResponse
 
 import aiohttp
+import time
 
 from utilities.moderation import moderate_text_input
 from enums.errors import HTTPSessionErrors
@@ -24,5 +25,8 @@ async def moderate_text(request: Request, text: str):
     if not session:
         raise HTTPException(500, HTTPSessionErrors.NO_SESSION.value)
 
+    start_time: float = time.time()
     flags: Union[list, str] = await moderate_text_input(request.app.state.session, text)
-    return JSONResponse({'results': flags})
+    end_time: float = time.time()
+    total_time: float = end_time - start_time
+    return JSONResponse({'results': flags, 'totalTime': total_time})

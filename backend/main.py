@@ -38,6 +38,7 @@ description: str = """
 pretty cool API
 
 Main website: https://rac-corp.net/
+
 Bot commands: https://rac-corp.net/docs/commands
 """
 limiter = Limiter(key_func=get_remote_address, default_limits=['10/second'])
@@ -47,7 +48,7 @@ app = FastAPI(
     terms_of_service='https://rac-corp.net/legal/terms-of-service',
     license_info={
         'name': 'MIT License',
-        'url': 'https://opensource.org/license/mit'
+        'url': 'https://rac-corp.net/legal/license'
     },
     version='0.0.5',
     lifespan=lifespan
