@@ -48,6 +48,43 @@ class Responses(Enum):
             }
         }
     }
+    TEXT_MODERATION = {
+        500: {
+            'description': 'Internal Server Error: Something happened on our end',
+            'content': {
+                'application/json': {
+                    'example': {'status': 500, 'detail': 'An error message would go here'}
+                }
+            }
+        },
+        403: {
+            'description': 'Forbidden: The request was not authorized properly',
+            'content': {
+                'application/json': {
+                    'example': {'status': 403, 'detail': 'Forbidden'}
+                }
+            }
+        },
+        401: {
+            'description': 'Unauthorized: The request was not authorized at all',
+            'content': {
+                'application/json': {
+                    'example': {'status': 401, 'detail': 'Unauthorized'}
+                }
+            }
+        },
+        200: {
+            'description': 'Successful request',
+            'content': {
+                'application/json': {
+                    'example': {
+                        'flagged': 'Whether the AI flagged the text as inappropiate',
+                        'flags': 'A list of the flags that the AI marked'
+                    }
+                }
+            }
+        }
+    }
 
     # roblox endpoints
     BAN_RESPONSES = {

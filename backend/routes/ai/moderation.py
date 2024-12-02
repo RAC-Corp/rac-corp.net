@@ -22,4 +22,4 @@ async def moderate_text(request: Request, text: str):
     flagged: bool = False
     if len(flags) > 0:
         flagged = True
-    return JSONResponse({'flagged': flagged, 'results': flagged})
+    return JSONResponse({'flagged': flagged, 'results': flags})
