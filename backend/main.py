@@ -14,7 +14,8 @@ from utilities import auth
 from utilities.session import AiohttpSessionManager
 
 from routes.ai import (
-    gemini
+    gemini,
+    moderation
 )
 from routes.roblox import (
     bans
@@ -33,6 +34,10 @@ async def lifespan(app: FastAPI):
     await app.state.session_manager.shutdown()
 
 
+description: str = """
+Main website: https://rac-corp.net/
+Bot commands: https://rac-corp.net/docs/commands
+"""
 limiter = Limiter(key_func=get_remote_address, default_limits=['10/second'])
 app = FastAPI(
     title='RAC API', 
@@ -66,6 +71,13 @@ async def http_exception_handler(request: Request, exception: HTTPException):
 
 app.include_router(
     gemini.router,
+    prefix='/ai',
+    dependencies=[Depends(auth.api_key_auth)]
+)
+
+
+app.include_router(
+    moderation.router,
     prefix='/ai',
     dependencies=[Depends(auth.api_key_auth)]
 )
