@@ -3,14 +3,22 @@ from enum import Enum
 
 class Responses(Enum):
     GEMINI_RESPONSES = {
-        500: {'description': 'Something happened on our end'},
-        403: {'description': 'The request was not authorized properly'},
-        401: {'description': 'The request was not authorized at all'},
+        500: {'description': 'Internal Server Error: Something happened on our end'},
+        403: {'description': 'Forbidden: The request was not authorized properly'},
+        401: {'description': 'Unauthorized: The request was not authorized at all'},
     }
-    BANS_RESPONSES = {
-        500: {'description': 'Something happened on our end'},
-        404: {'description': 'The user is not banned or could not be found'},
-        403: {'description': 'The request was not authorized properly'},
-        401: {'description': 'The request was not authorized at all'},
-        400: {'description': 'The request body could not be read by the server'},
+    BAN_RESPONSES = {
+        500: {'description': 'Internal Server Error: Something happened on our end'},
+        409: {'description': 'Conflict: The user is already banned'},
+        404: {'description': 'Not Found: The user could not be found'},
+        403: {'description': 'Forbidden: The request was not authorized properly'},
+        401: {'description': 'Unauthorized: The request was not authorized at all'},
+        400: {'description': 'Bad Request: The request body could not be read by the server'},
+    }
+    UNBAN_RESPONSES = {
+        500: {'description': 'Internal Server Error: Something happened on our end'},
+        404: {'description': 'Not Found: The user is not banned yet'},
+        403: {'description': 'Forbidden: The request was not authorized properly'},
+        401: {'description': 'Unauthorized: The request was not authorized at all'},
+        400: {'description': 'Bad Request: The request body could not be read by the server'},
     }

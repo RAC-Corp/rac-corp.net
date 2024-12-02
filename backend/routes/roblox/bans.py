@@ -12,7 +12,7 @@ router = APIRouter(prefix='/bans')
     '/create/temp', 
     summary='Ban a player with their user ID or username', 
     tags=['Bans'],
-    responses={**Responses.BANS_RESPONSES.value}
+    responses={**Responses.BAN_RESPONSES.value}
 )
 async def temp_ban_create(request: Request, player: Player, time: str):
     return JSONResponse({'response': 'not active yet'})
@@ -22,7 +22,7 @@ async def temp_ban_create(request: Request, player: Player, time: str):
     '/create/perm', 
     summary='Permanently ban a player with their user ID or username', 
     tags=['Bans'],
-    responses={**Responses.BANS_RESPONSES.value}
+    responses={**Responses.BAN_RESPONSES.value}
 )
 async def perm_ban_create(request: Request, player: Player):
     return JSONResponse({'response': 'not active yet'})
@@ -32,7 +32,7 @@ async def perm_ban_create(request: Request, player: Player):
     '/remove', 
     summary='Unban a player with their user ID or username',
     tags=['Bans'],
-    responses={**Responses.BANS_RESPONSES.value}
+    responses={**Responses.UNBAN_RESPONSES.value}
 )
 async def ban_remove(request: Request, player: Player):
     return JSONResponse({'response': 'not active yet'})
