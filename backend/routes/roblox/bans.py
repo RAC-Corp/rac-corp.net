@@ -8,6 +8,7 @@ from enums.responses import Responses
 router = APIRouter(prefix='/bans')
 
 
+# TODO: add 200 status code responses
 @router.post(
     '/create/temp', 
     summary='Ban a player with their user ID or username', 
