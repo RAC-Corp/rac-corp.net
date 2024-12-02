@@ -9,3 +9,8 @@ class Player(BaseModel):
 
 class Server(BaseModel):
     id: str
+
+
+class Game(BaseModel):
+    id: Optional[int]
+    universe_id: int

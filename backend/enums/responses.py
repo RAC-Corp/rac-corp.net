@@ -45,6 +45,12 @@ error_400: dict[str, Any] = generate_response(
 
 
 class Responses(Enum):
+    PLACEHOLDER_RESPONSES = {
+        500: error_500,
+        403: error_403,
+        401: error_401,
+        400: error_400 
+    }
 
     # ai endpoints
     GEMINI_RESPONSES = {

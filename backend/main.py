@@ -17,6 +17,9 @@ from routes.ai import (
     gemini,
     moderation
 )
+from routes.nsfw import (
+    neko
+)
 from routes.roblox import (
     bans,
     server
@@ -83,6 +86,16 @@ app.include_router(
 app.include_router(
     moderation.router,
     prefix='/ai',
+    dependencies=[Depends(auth.api_key_auth)]
+)
+
+
+# NSFW endpoints
+
+
+app.include_router(
+    neko.router,
+    prefix='nsfw',
     dependencies=[Depends(auth.api_key_auth)]
 )
 
