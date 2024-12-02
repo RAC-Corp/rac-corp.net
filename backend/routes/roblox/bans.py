@@ -28,9 +28,9 @@ async def perm_ban_create(request: Request, player: Player):
     return JSONResponse({'response': 'not active yet'})
 
 
-@router.post(
+@router.delete(
     '/remove', 
-    summary='Unban a player with their user ID or username (POST request cuz of Roblox limitations)',
+    summary='Unban a player with their user ID or username',
     tags=['Bans'],
     responses={**Responses.BANS_RESPONSES.value}
 )
