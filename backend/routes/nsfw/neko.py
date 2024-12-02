@@ -29,4 +29,4 @@ async def neko_nsfw_image(request: Request):
             raise HTTPException(500, 'Service we use gave us the middle finger')
         
         data: Any = await resp.json()
-        return JSONResponse(data['url'])
+        return JSONResponse(data['link'])
