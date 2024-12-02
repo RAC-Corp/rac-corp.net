@@ -12,11 +12,15 @@ from contextlib import asynccontextmanager
 
 from utilities import auth
 from utilities.session import AiohttpSessionManager
-from routes.utils import (
-    ping
-)
+
 from routes.ai import (
     gemini
+)
+from routes.roblox import (
+    bans
+)
+from routes.utils import (
+    ping
 )
 
 
@@ -47,22 +51,32 @@ async def http_exception_handler(request: Request, exception: HTTPException):
     )
 
 
-# Utility endpoints
-
-
-app.include_router(
-    ping.router,
-    prefix='/utilities',
-    dependencies=[Depends(auth.api_key_auth)]
-)
-
-
 # AI endpoints
 
 
 app.include_router(
     gemini.router,
     prefix='/ai',
+    dependencies=[Depends(auth.api_key_auth)]
+)
+
+
+# Roblox endpoints
+
+
+app.include_router(
+    bans.router,
+    prefix='/roblox',
+    dependencies=[Depends(auth.api_key_auth)]
+)
+
+
+# Utility endpoints
+
+
+app.include_router(
+    ping.router,
+    prefix='/utilities',
     dependencies=[Depends(auth.api_key_auth)]
 )
 

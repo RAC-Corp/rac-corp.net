@@ -16,7 +16,7 @@ gemini_key: Optional[str] = os.environ.get('gemini_key')
 url: str = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent'
 
 
-@router.post('/create', summary='Talk to Google Gemini AI')
+@router.post('/create', summary='Talk to Google Gemini AI', tags=['AI'])
 async def create_gemini(request: Request, data: GeminiRequestModel):
     if len(data.prompt) > 2000:
         raise HTTPException(

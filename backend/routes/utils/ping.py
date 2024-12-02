@@ -5,6 +5,6 @@ from fastapi.responses import JSONResponse
 router = APIRouter()
 
 
-@router.get('/ping', summary='Ping the API')
+@router.get('/ping', summary='Ping the API', tags=['Utility'])
 async def ping(request: Request):
     return JSONResponse('pong!')
