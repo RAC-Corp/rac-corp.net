@@ -1,26 +1,6 @@
 from enum import Enum
 
 
-"""
-        200: {
-            'description': 'OK: Successful request',
-            'content': {
-                'application/json': {
-                    'response': str,
-                    'totalTime': float,
-                    'metadata': {
-                        'promptTokenCount': int,
-                        'responseTokenCount': int,
-                        'totalTokenCount': int,
-                        'promptLength': int,
-                        'responseLength': int
-                    }
-                }
-            }
-        }
-"""
-
-
 class Responses(Enum):
 
     # ai endpoints
@@ -28,6 +8,24 @@ class Responses(Enum):
         500: {'description': 'Internal Server Error: Something happened on our end'},
         403: {'description': 'Forbidden: The request was not authorized properly'},
         401: {'description': 'Unauthorized: The request was not authorized at all'},
+        200: {
+            'description': 'OK: Successful request',
+            'content': {
+                'application/json': {
+                    'example': {
+                        'response': 'The AI\'s response',
+                        'totalTime': 'The amount of time it took for the AI to generate its response',
+                        'metadata': {
+                            'promptTokenCount': 'The token count of the prompt',
+                            'responseTokenCount': 'The token count of the response',
+                            'totalTokenCount': 'The added total of the prompt and response token counts',
+                            'promptLength': 'The amount of characters in the prompt',
+                            'responseLength': 'The amount of characters in the response'
+                        }
+                    }
+                }
+            }
+        }
     }
 
     # roblox endpoints
