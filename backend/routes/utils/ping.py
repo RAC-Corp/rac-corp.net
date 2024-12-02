@@ -7,4 +7,5 @@ router = APIRouter()
 
 @router.get('/ping', summary='Ping the API', tags=['Utility'])
 async def ping(request: Request):
+    # TODO: add responses argument
     return JSONResponse('pong!')

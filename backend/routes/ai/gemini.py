@@ -9,6 +9,7 @@ import aiohttp
 
 from models.ai_models import GeminiRequestModel
 from enums.errors import HTTPSessionErrors, AIErrors
+from enums.responses import Responses
 
 
 router = APIRouter(prefix='/gemini')
@@ -16,7 +17,12 @@ gemini_key: Optional[str] = os.environ.get('gemini_key')
 url: str = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent'
 
 
-@router.post('/create', summary='Talk to Google Gemini AI', tags=['AI'])
+@router.post(
+    '/create', 
+    summary='Talk to Google Gemini AI', 
+    tags=['AI'],
+    responses={**Responses.GEMINI_RESPONSES.value}
+)
 async def create_gemini(request: Request, data: GeminiRequestModel):
     if len(data.prompt) > 2000:
         raise HTTPException(
