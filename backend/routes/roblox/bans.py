@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import JSONResponse
 
-from ...models.roblox_models import Player
+from models.roblox_models import Player
 
 
 router = APIRouter(prefix='/bans')
