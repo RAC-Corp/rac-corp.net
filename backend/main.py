@@ -18,7 +18,8 @@ from routes.ai import (
     moderation
 )
 from routes.roblox import (
-    bans
+    bans,
+    server
 )
 from routes.utils import (
     ping
@@ -91,6 +92,13 @@ app.include_router(
 
 app.include_router(
     bans.router,
+    prefix='/roblox',
+    dependencies=[Depends(auth.api_key_auth)]
+)
+
+
+app.include_router(
+    server.router,
     prefix='/roblox',
     dependencies=[Depends(auth.api_key_auth)]
 )

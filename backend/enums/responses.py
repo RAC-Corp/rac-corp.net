@@ -89,39 +89,57 @@ class Responses(Enum):
     # roblox endpoints
     BAN_RESPONSES = {
         500: error_500,
-        409: {
-            'description': 'Conflict: The user is already banned',
-            'content': {
-                'application/json': {
-                    'example': {'status': 409, 'detail': 'Conflict'}
-                }
-            }
-        },
-        404: {
-            'description': 'Not Found: The user could not be found',
-            'content': {
-                'application/json': {
-                    'example': {'status': 404, 'detail': 'Not Found'}
-                }
-            }
-        },
+        409: generate_response(
+            'Conflict',
+            'The user is already banned',
+            409,
+            'Conflict'
+        ),
+        404: generate_response(
+            'Not Found',
+            'The user could not be found',
+            404,
+            'Not Found'
+        ),
         403: error_403,
         401: error_401,
         400: error_400,
     }
     UNBAN_RESPONSES = {
         500: error_500,
-        404: {
-            'description': 'Not Found: The user is not banned',
-            'content': {
-                'application/json': {
-                    'example': {'status': 404, 'detail': 'Not Found'}
-                }
-            }
-        },
+        404: generate_response(
+            'Not Found',
+            'The user is not banned',
+            404,
+            'Not Found'
+        ),
         403: error_403,
         401: error_401,
         400: error_400,
+    }
+    SERVER_INFO_RESPONSES = {
+        500: error_500,
+        404: generate_response(
+            'Not Found',
+            'The requested server could not be found',
+            404,
+            'Not Found'
+        ),
+        403: error_403,
+        401: error_401,
+        400: error_400
+    }
+    SHUTDOWN_SERVER_RESPONSES = {
+        500: error_500,
+        404: generate_response(
+            'Not Found',
+            'The requested server could not be found',
+            404,
+            'Not Found'
+        ),
+        403: error_403,
+        401: error_401,
+        400: error_400
     }
 
     # utility endpoints
