@@ -43,7 +43,7 @@ async def process_command(request: Request, command: CommandModel):
     }
     async with session.post(iisr_queue, headers=headers, json=json) as resp:
         if resp.status != 200:
-            raise HTTPException(500, 'Roblox gave us the middle finger')
+            raise HTTPException(500, f'Roblox gave us the middle finger: HTTP {resp.status}')
         
         data: Any = await resp.json()
         return JSONResponse(data)
