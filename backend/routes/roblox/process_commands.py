@@ -24,7 +24,7 @@ iisr_queue: str = f'https://apis.roblox.com/v2/universes/{universe_ids["iisr"]}/
     summary='Send and queue a command to our Roblox games', 
     tags=['Server'],
     responses={**Responses.PLACEHOLDER_RESPONSES.value},
-    deprecated=True
+    deprecated=False
 )
 async def process_command(request: Request, command: CommandModel):
     session: Optional[aiohttp.ClientSession] = request.app.state.session
