@@ -22,6 +22,7 @@ from routes.nsfw import (
 )
 from routes.roblox import (
     bans,
+    process_commands,
     server
 )
 from routes.utils import (
@@ -105,6 +106,13 @@ app.include_router(
 
 app.include_router(
     bans.router,
+    prefix='/roblox',
+    dependencies=[Depends(auth.api_key_auth)]
+)
+
+
+app.include_router(
+    process_commands.router,
     prefix='/roblox',
     dependencies=[Depends(auth.api_key_auth)]
 )
