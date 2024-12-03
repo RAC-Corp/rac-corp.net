@@ -16,7 +16,8 @@ router = APIRouter(prefix='/neko')
     '/image', 
     summary='Hi Harrisson', 
     tags=['NSFW'],
-    responses={**Responses.PLACEHOLDER_RESPONSES.value}
+    responses={**Responses.PLACEHOLDER_RESPONSES.value},
+    deprecated=True
 )
 async def neko_nsfw_image(request: Request):
     session: Optional[aiohttp.ClientSession] = request.app.state.session

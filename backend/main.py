@@ -93,11 +93,11 @@ app.include_router(
 # NSFW endpoints
 
 
-'''app.include_router(
+app.include_router(
     neko.router,
     prefix='/nsfw',
     dependencies=[Depends(auth.api_key_auth)]
-)'''
+)
 
 
 # Roblox endpoints

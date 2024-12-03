@@ -16,3 +16,4 @@ class HTTPSessionErrors(Enum):
 
 class RobloxErrors(Enum):
     NO_PLAYER_ARGUMENT = 'No player ID or username could be found in the request body'
+    NO_IISR_KEY = f'No IISR key could be found, {discord_message}'

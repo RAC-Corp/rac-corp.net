@@ -14,3 +14,8 @@ class Server(BaseModel):
 class Game(BaseModel):
     id: Optional[int]
     universe_id: int
+
+
+class CommandModel(BaseModel):
+    username: str
+    command: str
