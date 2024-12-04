@@ -45,9 +45,9 @@ async def create_cai(request: Request, data: CharacterAIRequestModel, raw: bool 
         raise HTTPException(413, 'Prompt content too long (less than or equal to 1000 characters)')
     
     if not cai_key:
-        raise HTTPException(500, AIErrors.NO_CAI_KEY)
+        raise HTTPException(500, AIErrors.NO_CAI_KEY.value)
     if not chat_key:
-        raise HTTPException(500, AIErrors.NO_CAI_CHAT_KEY)
+        raise HTTPException(500, AIErrors.NO_CAI_CHAT_KEY.value)
     if not cai_tgt:
         raise HTTPException(500, AIErrors.NO_CAI_TGT.value)
     
@@ -90,9 +90,9 @@ async def create_cai(request: Request, data: CharacterAIRequestModel, raw: bool 
 )
 async def history_cai(request: Request):
     if not cai_key:
-        raise HTTPException(500, AIErrors.NO_CAI_KEY)
+        raise HTTPException(500, AIErrors.NO_CAI_KEY.value)
     if not chat_key:
-        raise HTTPException(500, AIErrors.NO_CAI_CHAT_KEY)
+        raise HTTPException(500, AIErrors.NO_CAI_CHAT_KEY.value)
     if not cai_tgt:
         raise HTTPException(500, AIErrors.NO_CAI_TGT.value)
     

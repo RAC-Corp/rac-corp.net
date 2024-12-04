@@ -47,7 +47,7 @@ Main website: https://rac-corp.net/
 
 Bot commands: https://rac-corp.net/docs/commands
 """
-limiter = Limiter(key_func=get_remote_address, default_limits=['10/second'])
+limiter = Limiter(key_func=get_remote_address, default_limits=['10/second'], headers_enabled=True)
 app = FastAPI(
     title='RAC API', 
     description=description,
