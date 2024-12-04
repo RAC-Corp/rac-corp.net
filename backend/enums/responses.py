@@ -24,6 +24,12 @@ error_500: dict[str, Any] = generate_response(
     500,
     'An error message would go here'
 )
+error_413: dict[str, Any] = generate_response(
+    'Request Entity Too Large',
+    'The request payload was too large',
+    413,
+    'Request Entity Too Large'
+)
 error_403: dict[str, Any] = generate_response(
     'Forbidden',
     'The request was not authenticated properly',
@@ -47,14 +53,30 @@ error_400: dict[str, Any] = generate_response(
 class Responses(Enum):
     PLACEHOLDER_RESPONSES = {
         500: error_500,
+        413: error_413,
         403: error_403,
         401: error_401,
         400: error_400 
     }
 
     # ai endpoints
+    CLOUDFLARE_IMAGE_RESPONSES = {
+        500: error_500,
+        413: error_413,
+        403: error_403,
+        401: error_401,
+        400: error_400 
+    }
+    CHARACTER_AI_RESPONSES = {
+        500: error_500,
+        413: error_413,
+        403: error_403,
+        401: error_401,
+        400: error_400 
+    }
     GEMINI_RESPONSES = {
         500: error_500,
+        413: error_413,
         403: error_403,
         401: error_401,
         200: {
