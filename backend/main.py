@@ -15,6 +15,7 @@ from utilities.session import AiohttpSessionManager
 
 from routes.ai import (
     gemini,
+    cai,
     moderation
 )
 from routes.nsfw import (
@@ -86,6 +87,13 @@ app.include_router(
 
 app.include_router(
     moderation.router,
+    prefix='/ai',
+    dependencies=[Depends(auth.api_key_auth)]
+)
+
+
+app.include_router(
+    cai.router,
     prefix='/ai',
     dependencies=[Depends(auth.api_key_auth)]
 )
