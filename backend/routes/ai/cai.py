@@ -36,6 +36,7 @@ def extract_text(data: str) -> str:
 
 @router.post(
     '/create',
+    summary='Chat with a Character.AI bot',
     tags=['AI'],
     responses={**Responses.CHARACTER_AI_RESPONSES.value}
 )
