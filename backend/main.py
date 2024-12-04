@@ -147,3 +147,9 @@ app.include_router(
 @limiter.limit('1/second')
 async def root(request: Request):
     return RedirectResponse('https://api.rac-corp.net/docs/', 308)
+
+
+@app.get('/.env', include_in_schema=False)
+@limiter.limit('1/second')
+async def slash_env(request: Request):
+    return RedirectResponse('https://www.youtube.com/watch?v=dQw4w9WgXcQ', 308)
