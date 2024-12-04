@@ -8,7 +8,8 @@ from fastapi.security import APIKeyHeader, HTTPBearer, HTTPAuthorizationCredenti
 
 api_keys: dict[str, Any] = {
     'testkey': os.environ.get('testkey'),
-    'publictestkey': os.environ.get('publictestkey')
+    'publictestkey': os.environ.get('publictestkey'),
+    'insecurekey': os.environ.get('insecurekey')
 }
 
 

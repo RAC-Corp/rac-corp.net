@@ -80,3 +80,24 @@ async def create_cai(request: Request, data: CharacterAIRequestModel, raw: bool 
             except:
                 raise HTTPException(500, 'JSONifying response data failed')
             return JSONResponse({'response': json_data, 'totalTime': total_time})
+        
+
+@router.get(
+    '/history',
+    summary='Get the history of the current C.AI chat',
+    tags=['AI'],
+    responses={**Responses.PLACEHOLDER_RESPONSES.value}
+)
+async def history_cai(request: Request):
+    if not cai_key:
+        raise HTTPException(500, AIErrors.NO_CAI_KEY)
+    if not chat_key:
+        raise HTTPException(500, AIErrors.NO_CAI_CHAT_KEY)
+    if not cai_tgt:
+        raise HTTPException(500, AIErrors.NO_CAI_TGT.value)
+    
+    '''session: Optional[aiohttp.ClientSession] = request.app.state.session
+    if not session:
+        raise HTTPException(500, HTTPSessionErrors.NO_SESSION)'''
+    
+    return JSONResponse({'wip endpoint'})

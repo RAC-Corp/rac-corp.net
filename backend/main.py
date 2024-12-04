@@ -143,7 +143,7 @@ app.include_router(
 )
 
 
-@app.get('/', summary='Don\'t GET this endpoint, it is just a redirect')
+@app.get('/', summary='Don\'t GET this endpoint, it is just a redirect', tags=['None'])
 @limiter.limit('1/second')
 async def root(request: Request):
     return RedirectResponse('https://api.rac-corp.net/docs/', 308)
