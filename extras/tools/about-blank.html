@@ -32,6 +32,10 @@
         <script>
             function create() {
                 var url = document.getElementById('url').value;
+                if (!url.startsWith('https://')) {
+                    url = 'https://' + url
+                }
+
                 var win = window.open('about:blank');
                 win.document.body.style.margin = '0';
                 win.document.body.style.height = '100vh';
